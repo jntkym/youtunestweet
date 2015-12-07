@@ -4,6 +4,10 @@
 # precision: 0.71 (estimate)
 # recall: 0.83 (estimate)
 
+# fix: いちいちjsonにおとし込まなくてもリストのまま処理させるほうが自然
+# fix: リストが空のときはどうするか
+# todo: returnPlausibleVideoId()の処理がnot smart
+
 import sys
 import requests
 import json
@@ -46,8 +50,13 @@ def tweetSong(keyword, video_id):
   else:
     print("Error: %d" % req_status_code)
 
-if __name__ == '__main__':
+def main():
   kw = sys.argv[1] + " - " + sys.argv[2]
   searchSong(kw)
   song_video_id = returnPlausibleVideoID()
-  tweetSong(kw, song_video_id)
+  f = tweetSong(kw, song_video_id)
+  if f == FALSE:
+    print("Error")
+
+if __name__ == '__main__':
+  main()
