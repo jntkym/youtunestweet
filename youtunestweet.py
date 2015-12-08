@@ -52,7 +52,7 @@ def tweetSong(keyword, video_id):
     print "Tweeting the song information...",
     req = twitter.post(url, params = params)
     if req.status_code == 200:
-      print "OK", 
+      return True
     else:
       print "Error: %d" % req_status_code,
 
@@ -62,8 +62,8 @@ def main():
   song_video_id = returnPlausibleVideoID()
   print song_video_id,
   f = tweetSong(kw, song_video_id)
-  #if f == FALSE:
-  #  print("Error")
+  if f == FALSE:
+   print("Error")
 
 if __name__ == '__main__':
   main()
