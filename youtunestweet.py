@@ -27,13 +27,16 @@ def searchSong(keyword):
 # 動画リストの中から適切なビデオを1つ返す
 def returnPlausibleVideoID(response_json):
   # 今は単純にTopの動画idを返すだけ
-  j = response_json.get('items')
-  if not j:
-    print "Error: Cannot find the song on YouTube",
-    return False
-  else:
-    print "Getting the plausible song url...",
-    return j[0]['id']['videoId']
+  try:
+    j = response_json.get('items')
+    if not j:
+      print "Error: Cannot find the song on YouTube",
+      return False
+    else:
+      print "Getting the plausible song url...",
+      return j[0]['id']['videoId']
+  except:
+    print "Error: Argument is not json"
 
 # 曲および動画情報をツイート
 def tweetSong(keyword, video_id):
@@ -51,11 +54,13 @@ def tweetSong(keyword, video_id):
     else:
       print "Error: %d" % req_status_code,
 
-def main():
-  kw = sys.argv[1] + " - " + sys.argv[2]
+def main(artist_name, song_name):
+  kw = artist_name + " - " + song_name
   r = searchSong(kw)
   song_video_id = returnPlausibleVideoID(r)
   tweetSong(kw, song_video_id)
 
 if __name__ == '__main__':
-  main()
+  artist = sys.argv[1]
+  song = sys.argv[2]
+  main(artist, song)
