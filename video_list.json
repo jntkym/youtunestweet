@@ -1,0 +1,35 @@
+{
+ "kind": "youtube#searchListResponse",
+ "etag": "\"3WIcRE7IJ70nCYemJJIi1L7dYAg/mEjTwdhquwdxG-rg_r3sgcj_ffM\"",
+ "nextPageToken": "CAMQAA",
+ "pageInfo": {
+  "totalResults": 1000000,
+  "resultsPerPage": 3
+ },
+ "items": [
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"3WIcRE7IJ70nCYemJJIi1L7dYAg/Eh8HorDcUf-FkXlEPLPldvWwuqI\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "UyG1FG3H6rY"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"3WIcRE7IJ70nCYemJJIi1L7dYAg/6lKcrlNOX6lxgAbos49tlLXDlUw\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "aZ5gkJDmZv4"
+   }
+  },
+  {
+   "kind": "youtube#searchResult",
+   "etag": "\"3WIcRE7IJ70nCYemJJIi1L7dYAg/g9zIuX2cDpuHCvRlwMNNHD4o834\"",
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "LU-ZQWZSGfc"
+   }
+  }
+ ]
+}
