@@ -11,11 +11,11 @@ import requests
 import json
 from requests_oauthlib import OAuth1Session
 
-GOOGLE_API_KEY = 'AIzaSyCgwHYIlfI_Duo5dvQY_aoofV6AUJyMg0M'
-TWITTER_CK = 'Nz1uSmTlnSdUdn5AXpPYc5QJr'
-TWITTER_CS = 'sg6w293jm4BbvnfkBJDkattHlSSgPWeNoquCUacmZm6MA3Ydo0'
-TWITTER_AT = '860724973-ORvMNqqN4oZOnw1bYIPn2T7jLeyhYo9klUad5MJf'
-TWITTER_AS = 'wu31x3zWd3yUoj5hZefL9kLtRdGe64jl7nfQ2fw900oBc'
+GOOGLE_API_KEY = 'REPLACE ME'
+TWITTER_CK = 'REPLACE ME'
+TWITTER_CS = 'REPLACE ME'
+TWITTER_AT = 'REPLACE ME'
+TWITTER_AS = 'REPLACE ME'
 
 # 曲名でYouTubeから動画リストを所得
 def searchSong(keyword):
