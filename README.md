@@ -1,7 +1,7 @@
 #youtunestweet
 iTunes(Mac)で再生中の曲をYouTubeから探してきてリンクをツイートします   
 Find the song you listening to on YouTube and tweet it for iTunes(Mac)   
-##使い方(Usage)
+##How to Use
 - 再生中に(While you're listening to the song)
 ```
 osascript youtunestweet.scpt
