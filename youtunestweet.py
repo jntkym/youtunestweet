@@ -7,6 +7,8 @@
 # todo: returnPlausibleVideoId()の処理がnot smart
 
 import sys
+import codecs
+import argparse
 import requests
 import json
 from requests_oauthlib import OAuth1Session
@@ -55,12 +57,18 @@ def tweetSong(keyword, video_id):
       print "Error: %d" % req_status_code,
 
 def main(artist_name, song_name):
-  kw = artist_name + " - " + song_name
+  kw = (artist_name + " - " + song_name).decode('utf_8')
   r = searchSong(kw)
   song_video_id = returnPlausibleVideoID(r)
   tweetSong(kw, song_video_id)
 
 if __name__ == '__main__':
-  artist = sys.argv[1]
-  song = sys.argv[2]
-  main(artist, song)
+  sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
+
+  parser = argparse.ArgumentParser()
+
+  parser.add_argument("-artist", help="artist name")
+  parser.add_argument("-song", help="song name")
+  args = parser.parse_args()
+
+  main(args.artist, args.song)
