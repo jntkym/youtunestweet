@@ -3,4 +3,4 @@ tell application "iTunes"
   set track_name to name of (current track) as string
 end tell
 
-do shell script "python ./youtunestweet.py \"" & artist_name & "\" \"" & track_name & "\""
+do shell script "python ./youtunestweet.py -artist \"" & artist_name & "\" -song \"" & track_name & "\""
