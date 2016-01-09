@@ -13,11 +13,14 @@ import requests
 import json
 from requests_oauthlib import OAuth1Session
 
-GOOGLE_API_KEY = 'REPLACE ME'
+GOOGLE_API_KEY = 'AIzaSyDoHoWt3mUjkzGM-GUNF72WArfyAqsYqIA'
 TWITTER_CK = 'REPLACE ME'
 TWITTER_CS = 'REPLACE ME'
 TWITTER_AT = 'REPLACE ME'
 TWITTER_AS = 'REPLACE ME'
+
+def test():
+  print "test"
 
 # 曲名でYouTubeから動画リストを所得
 def searchSong(keyword):
@@ -62,13 +65,13 @@ def main(artist_name, song_name):
   song_video_id = returnPlausibleVideoID(r)
   tweetSong(kw, song_video_id)
 
-if __name__ == '__main__':
-  sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
+#if __name__ == '__main__':
+  #sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
-  parser = argparse.ArgumentParser()
+  #parser = argparse.ArgumentParser()
 
-  parser.add_argument("-artist", help="artist name")
-  parser.add_argument("-song", help="song name")
-  args = parser.parse_args()
+  #parser.add_argument("-artist", help="artist name")
+  #parser.add_argument("-song", help="song name")
+  #args = parser.parse_args()
 
-  main(args.artist, args.song)
+  #main(args.artist, args.song)
