@@ -4,10 +4,12 @@
 import youtunestweet as ytt
 import commands
 import webbrowser
+import datetime
 
 def main():
   evaluations = []
   
+  count = 0
   select = 'c'
   while(select!='q'):
     print "Running perfomance test..."
@@ -15,21 +17,32 @@ def main():
 
     kw = commands.getoutput('osascript getsonginfo.scpt')
     r = ytt.searchSong(kw)
-    url = "http://youtu.be/" + ytt.returnPlausibleVideoID(r)
-    webbrowser.open_new(url)
-    
-    print "Evaluation(T/F)"
-    evaluation = raw_input(': ')
-    evaluations.append(evaluation)
-    
-    print "(q: quit, c: continue)"
-    select = raw_input('>>> ')
+    result = ytt.returnPlausibleVideoID(r)
 
-  precision = float(evaluation.count("T")) / len(evaluation)
-  #recall = 
-  #f_value = 
+    if result == False or result == None:
+      print "Cannot Find on Youtube",
+      print "Put the F",
+      evaluations.append("F")
+      count = count + 1
+    else:
+      url = "http://youtu.be/" + ytt.returnPlausibleVideoID(r)
+      webbrowser.open_new(url)
+      print count+1,
+      print "Evaluation(T/F)",
+      evaluation = raw_input(': ')
+      evaluations.append(evaluation)
+    
+      print "(q: quit, c: continue)"
+      select = raw_input('>>> ')
+      count = count + 1
+
+  precision = float(evaluations.count("T")) / len(evaluations)
   print precision
-  #ログファイルに書き込む
+  #d - datetime.datetime.today()
+  #f_name = './testlog/test' + d.strftime("%Y-%m-%d-%H-%M-%S")
+  #f = open(f_namem 'w')
+  #f.write()
+  #f.close
 
 if __name__ == '__main__':
   main()
