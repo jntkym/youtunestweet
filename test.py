@@ -19,6 +19,7 @@ def main():
     r = ytt.searchSong(kw)
     result = ytt.returnPlausibleVideoID(r)
 
+    # TODO: Exception Handling
     if result == False or result == None:
       print "Cannot Find on Youtube",
       print "Put the F",
@@ -38,11 +39,11 @@ def main():
 
   precision = float(evaluations.count("T")) / len(evaluations)
   print precision
-  #d - datetime.datetime.today()
-  #f_name = './testlog/test' + d.strftime("%Y-%m-%d-%H-%M-%S")
-  #f = open(f_namem 'w')
-  #f.write()
-  #f.close
+  d = datetime.datetime.today()
+  f_name = './testlog/test' + d.strftime("%Y-%m-%d-%H-%M-%S")
+  f = open(f_name, 'w')
+  f.write("precision: %f" % precision)
+  f.close
 
 if __name__ == '__main__':
   main()

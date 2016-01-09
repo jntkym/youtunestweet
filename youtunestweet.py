@@ -13,7 +13,7 @@ import requests
 import json
 from requests_oauthlib import OAuth1Session
 
-GOOGLE_API_KEY = 'AIzaSyDoHoWt3mUjkzGM-GUNF72WArfyAqsYqIA'
+GOOGLE_API_KEY = 'REPLACE ME'
 TWITTER_CK = 'REPLACE ME'
 TWITTER_CS = 'REPLACE ME'
 TWITTER_AT = 'REPLACE ME'
