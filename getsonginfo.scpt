@@ -1,3 +1,5 @@
+(* Getting song information interactively * )
+
 tell application "iTunes"
   repeat
     if (player state) is playing then

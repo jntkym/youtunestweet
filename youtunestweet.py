@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# sample: 100
-# precision: 0.71 (estimate)
-# recall: 0.83 (estimate)
-
 # todo: returnPlausibleVideoId()の処理がnot smart
 
 import sys

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+#TODO: refactoring
+
 import youtunestweet as ytt
 import commands
 import webbrowser
@@ -39,6 +41,7 @@ def main():
 
   precision = float(evaluations.count("T")) / len(evaluations)
   print precision
+  # log出力
   d = datetime.datetime.today()
   f_name = './testlog/test' + d.strftime("%Y-%m-%d-%H-%M-%S")
   f = open(f_name, 'w')
