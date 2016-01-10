@@ -1,5 +1,3 @@
-(* Getting song information interactively * )
-
 tell application "iTunes"
   repeat
     if (player state) is playing then
@@ -14,6 +12,7 @@ tell application "iTunes"
       exit repeat
     end if
   end repeat
+  next track
 end tell
 
 return ((currentArtist) as string) & " - " & ((currentSong) as string)
