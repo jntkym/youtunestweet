@@ -19,17 +19,17 @@ def main():
     [%d]:
     Ready, Play the song...""" % (count+1)
 
-    kw = commands.getoutput('osascript getsonginfo.scpt')
-    r = ytt.searchSong(kw)
-    result = ytt.returnPlausibleVideoID(r)
+    input_keyword = commands.getoutput('osascript getsonginfo.scpt')
+    song_info = ytt.searchSong(input_keyword)
+    videoID = ytt.returnPlausibleVideoID(song_info)
 
-    if result == False or result == None:
+    if videoID == False or videoID == None:
       # TODO: Exception Handdling
       #log_info: Cannot Find on Youtube and so put F as evaluation
       evaluations.append("F")
       count = count + 1
     else:
-      url = "http://youtu.be/" + ytt.returnPlausibleVideoID(r)
+      url = "http://youtu.be/" + videoID
       webbrowser.open_new(url)
       print "Evaluation(T/F)",
       evaluation = raw_input(': ')
@@ -48,9 +48,9 @@ def main():
 
   f_value = 2 * precision * recall / precision + recall
 
-  d = datetime.datetime.today()
-  f_name = './testlog/test' + d.strftime("%Y-%m-%d-%H-%M-%S")
-  f = open(f_name, 'w')
+  now = datetime.datetime.today()
+  file_name = './testlog/test' + now.strftime("%Y-%m-%d-%H-%M-%S")
+  f = open(file_name, 'w')
 
   result_log = """
   Output: [%d] Trials
