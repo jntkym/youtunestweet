@@ -15,13 +15,10 @@ TWITTER_CS = 'REPLACE ME'
 TWITTER_AT = 'REPLACE ME'
 TWITTER_AS = 'REPLACE ME'
 
-def test():
-  print "test"
-
 # 曲名でYouTubeから動画リストを所得
 def searchSong(keyword):
   url = "https://www.googleapis.com/youtube/v3/search?key=%s&q=%s&part=id&maxResults=3" % (GOOGLE_API_KEY, keyword)
-  print "Getting video information from YouTube by querying %s ..." % keyword, 
+  print "Getting video information from YouTube by querying %s ..." % keyword 
   response = requests.get(url).json()
   return response
 
@@ -31,35 +28,35 @@ def returnPlausibleVideoID(response_json):
   try:
     j = response_json.get('items')
     if not j:
-      print "Error: Cannot find the song on YouTube",
+      print "Error: Cannot find the song on YouTube"
       return False
     else:
-      print "Getting the plausible song url...",
+      print "Getting the plausible song url..."
       return j[0]['id']['videoId']
   except:
-    print "Error: Argument is not wrong"
+    print "Error: Argument is  wrong"
 
 # 曲および動画情報をツイート
 def tweetSong(keyword, video_id):
   if video_id == False:
-    print "Error: Cannot tweet the song information", 
+    print "Error: Cannot tweet the song information" 
   else: 
     url = "https://api.twitter.com/1.1/statuses/update.json"
     tweet = "%s youtu.be/%s #nowplaying" % (keyword, video_id)
     params = {"status": tweet}
     twitter = OAuth1Session(TWITTER_CK, TWITTER_CS, TWITTER_AT, TWITTER_AS)
-    print "Tweeting the song information...",
+    print "Tweeting the song information..."
     req = twitter.post(url, params = params)
     if req.status_code == 200:
       return True
     else:
-      print "Error: %d" % req_status_code,
+      print "Error: %d" % req_status_code
 
 def main(artist_name, song_name):
-  kw = (artist_name + " - " + song_name).decode('utf_8')
-  r = searchSong(kw)
-  song_video_id = returnPlausibleVideoID(r)
-  tweetSong(kw, song_video_id)
+  input_keyword = (artist_name + " - " + song_name).decode('utf_8')
+  song_info = searchSong(input_keyword)
+  videoID = returnPlausibleVideoID(song_info)
+  tweetSong(input_keyword, videoID)
 
 #if __name__ == '__main__':
   #sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
