@@ -34,7 +34,7 @@ def returnPlausibleVideoID(response_json):
       print "Getting the plausible song url..."
       return video_list[0]['id']['videoId']
   except:
-    print "Error: Argument is  wrong"
+    print "Error: Argument is wrong"
 
 # 曲および動画情報をツイート
 def tweetSong(keyword, video_id):
