@@ -26,13 +26,13 @@ def searchSong(keyword):
 def returnPlausibleVideoID(response_json):
   # 今は単純にTopの動画idを返すだけ
   try:
-    j = response_json.get('items')
-    if not j:
+    video_list = response_json.get('items')
+    if not video_list:
       print "Error: Cannot find the song on YouTube"
       return False
     else:
       print "Getting the plausible song url..."
-      return j[0]['id']['videoId']
+      return video_list[0]['id']['videoId']
   except:
     print "Error: Argument is  wrong"
 
@@ -46,11 +46,11 @@ def tweetSong(keyword, video_id):
     params = {"status": tweet}
     twitter = OAuth1Session(TWITTER_CK, TWITTER_CS, TWITTER_AT, TWITTER_AS)
     print "Tweeting the song information..."
-    req = twitter.post(url, params = params)
-    if req.status_code == 200:
+    request = twitter.post(url, params = params)
+    if request.status_code == 200:
       return True
     else:
-      print "Error: %d" % req_status_code
+      print "Error: %d" % request.status_code
 
 def main(artist_name, song_name):
   input_keyword = (artist_name + " - " + song_name).decode('utf_8')
